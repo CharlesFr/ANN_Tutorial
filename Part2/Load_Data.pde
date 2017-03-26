@@ -2,7 +2,7 @@
 
 Charles Fried - 2017
 ANN Tutorial 
-Part #1
+Part #2
 
 LOADING DATA
 
@@ -11,7 +11,8 @@ The original set can be found here: http://yann.lecun.com/exdb/mnist/
 
 */
 
-
+Card [] testing_set; // the set we use to train (2000)
+Card [] training_set; // the set we use to train (8000)
 
 class Card { // This class contains all the functions to format and save the data
 
