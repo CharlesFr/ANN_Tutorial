@@ -1,40 +1,38 @@
 /*
 
-Charles Fried - 2017
-ANN Tutorial 
-Part #1
+ Charles Fried - 2017
+ ANN Tutorial 
+ Part #1
+ 
+ MAIN TAB
+ 
+ */
 
-MAIN TAB
 
-*/
-
-Card [] testing_set; // the set we use to train (2000)
-Card [] training_set; // the set we use to train (8000)
 int cardNum = int(random(2000));
 
+Network neuralnet;
 
-void setup(){
-  textFont(createFont("HelveticaNeue-Light-15.vlw", 14));
-  size(800,300);
+void setup() {
+
+  size(1000, 400);
   loadData();
-  stroke(100);
+  neuralnet = new Network(196);
+  smooth();
+  stroke(150);
 }
 
-void draw(){
+void draw() {
+
+  neuralnet.respond(testing_set[cardNum]);
   background(255);
-  for(int i = 0;i < testing_set[cardNum].inputs.length; i++){
-      pushMatrix();
-      translate((i%14) * height / 20.0 + width * 0.05, (i/14) * height / 20.0 + height * 0.15);
-      fill((0.5-testing_set[cardNum].inputs[i]*0.5) *255);
-      ellipse(0,0,12,12);
-      popMatrix();
-  }
+  neuralnet.display();
   
   fill(100);
-  text("Card number: #" + cardNum, width*0.5, height*0.45);
-  text("Card tag: " + testing_set[cardNum].output, width*0.5, height*0.5);
+  text("Card number: #" + cardNum, width*0.05, height*0.9);
+  text("Card label: " + testing_set[cardNum].output, width*0.05, height*0.95);
 }
 
-void mousePressed(){
+void mousePressed() {
   cardNum = int(random(2000));
 }

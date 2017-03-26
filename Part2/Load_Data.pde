@@ -1,18 +1,17 @@
 /*
 
- Charles Fried - 2017
- ANN Tutorial 
- Part #1
- 
- LOADING DATA
- 
- The data is a list of 10,000 handwritten digits resampled to a grid of 14x14 pixels by Alasdair Turner
- The original set can be found here: http://yann.lecun.com/exdb/mnist/
- 
- */
+Charles Fried - 2017
+ANN Tutorial 
+Part #1
 
-Card [] testing_set; // the set we use to train (2000)
-Card [] training_set; // the set we use to train (8000)
+LOADING DATA
+
+The data is a list of 10,000 handwritten digits resampled to a grid of 14x14 pixels by Alasdair Turner
+The original set can be found here: http://yann.lecun.com/exdb/mnist/
+
+*/
+
+
 
 class Card { // This class contains all the functions to format and save the data
 
@@ -26,16 +25,16 @@ class Card { // This class contains all the functions to format and save the dat
   }
 
   void imageLoad(byte [] images, int offset) { // Images is an array of 1,960,000 bytes, each one representing a pixel (0-255) of the 10,000 * 14x14 (196) images
-    // We know one image consists of 196 bytes so the location is: offset*196
+                                               // We know one image consists of 196 bytes so the location is: offset*196
     for (int i = 0; i < 196; i++) {
-      inputs[i] = int(images[i+offset]) / 128.0 - 1.0; // We then store each pixel in the array inputs[] after converting it from (0 - 255) to (+1 - -1) as they vary on the greyscale
+      inputs[i] = int(images[i+offset]) / 128.0 - 1.0; // We then store each pixel in the array inputs[] after converting it from (0 - 255) to (+1 - -1) as they vary on the greyscale 
     }
   }
 
   void labelLoad(byte [] labels, int offset) {  // Labels is an array of 10,000 bytes, each representing the answer of each image
 
     output = int(labels[offset]);
-
+    
     for (int i = 0; i < 10; i++) {  // We then set the correct index in output[] to +1 if it corresponds to the ouput and -1 if not
       if (i == output) {
         outputs[i] = 1.0;
@@ -44,10 +43,11 @@ class Card { // This class contains all the functions to format and save the dat
       }
     }
   }
+  
 }
 
-void loadData() { // In this function we initialise all out data in two seperate arrays, training[] and test[]
-
+void loadData(){ // In this function we initialise all out data in two seperate arrays, training[] and test[]
+  
   byte [] images = loadBytes("t10k-images-14x14.idx3-ubyte");
   byte [] labels = loadBytes("t10k-labels.idx1-ubyte");
   training_set = new Card [8000];
