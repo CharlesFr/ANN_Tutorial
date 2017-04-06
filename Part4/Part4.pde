@@ -6,6 +6,12 @@
  
  MAIN TAB
  
+ Original from Alasdair Turner (c) 2009
+ Free software: you can redistribute this program and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ 
  */
 
 
